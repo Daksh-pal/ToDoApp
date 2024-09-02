@@ -6,7 +6,7 @@ const taskSchema = new Schema({
         required : true,
         maxlength : 50
     },
-    decription : {
+    description : {
         type : String , 
         required : true,
         maxlength : 300
@@ -17,7 +17,7 @@ const taskSchema = new Schema({
     },
     state : {
         type : Boolean,
-        requried : true
+        required : true
     }
 });
 
