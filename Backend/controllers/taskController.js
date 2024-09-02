@@ -16,7 +16,7 @@ export const addTask = async(req,res)  => {
 }
 
 export const deleteTask = async(req,res)  => {
-    const id = req.params;
+    const {id} = req.params;
     try {
         const task = await Task.findByIdAndDelete(id);
         if(!task){
@@ -31,7 +31,7 @@ export const deleteTask = async(req,res)  => {
 }
 
 export const getTaskById = async(req,res) => {
-    const id = req.params;
+    const {id} = req.params;
     try {
         const task = await Task.findById(id);
         if(!task){
@@ -47,8 +47,8 @@ export const getTaskById = async(req,res) => {
 }
 
 export const updateTask = async(req,res) => {
-    const id = req.params.id;
-    const {title,description} = req.body;
+    const {id} = req.params;
+    const {title,description,state} = req.body;
     try {
         const updatedTask = await Task.findByIdAndUpdate(id,{title,description,state},{new:true});
 
@@ -72,3 +72,4 @@ export const getAllTasks = async(req,res)  => {
         return res.status(500).json({error: "Internal server error"});
     }
 }
+
