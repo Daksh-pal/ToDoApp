@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import {gsap} from 'gsap'
 import './Register.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+
+  const navigate = useNavigate();
 
   const [username , setUsername] = useState("");
   const [password , setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/api/user/register',{
-      username,
-      password
-    })
-    console.log("Fine till submit");
+
+    try {
+      await axios.post('http://localhost:8000/api/user/register',{
+        username,
+        password
+      })
+      navigate('/login');
+      toast.success("Successfully Registered")
+    } catch (error) {
+      toast.error("Registration failed " + error.response?.data?.message || error.message);
+    }
+
   }
 
   useEffect(() => {
