@@ -1,0 +1,24 @@
+.navbar {
+    max-width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: black; 
+}
+
+.navbar h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: white
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar a:hover h2 {
+    color: rgb(190, 187, 187);
+}
