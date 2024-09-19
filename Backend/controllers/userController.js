@@ -8,7 +8,7 @@ export const register = async(req,res) => {
     try {
         const user  = await User.findOne({username});
         if(user){
-            return res.status(400).json({error : "User already exists"});
+            return res.status(400).json({message : "User already exists"});
         }
         const hashedPassword = await bcrypt.hash(password,10);
         const newUser = new User({
@@ -17,6 +17,7 @@ export const register = async(req,res) => {
         })
         await newUser.save();
         const token = createToken(newUser._id);
+        return res.status(201).json({message :"User Registered successfully",token});
     } catch (error) {
         console.log("Error in user registration ->" , error);
         res.status(500).json({error : "Internal Server Error"})

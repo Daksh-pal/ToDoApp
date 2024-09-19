@@ -15,12 +15,21 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:8000/api/user/login' , {
-      username,
-      password
-    })
-    navigate('/')
-    toast.success("Successfully logged in");
+    try {
+      const response = await axios.post('http://localhost:8080/api/user/login' , {
+        username,
+        password
+      })
+      localStorage.setItem('token' , response.data.token);
+      console.log(response);
+  
+      navigate('/allTasks');
+      toast.success("Successfully logged in");
+    
+    } catch (error) {
+      console.log(error);
+      toast.error("Unauthorized Acess")
+    }
   }
 
   useEffect(() => {
@@ -44,4 +53,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

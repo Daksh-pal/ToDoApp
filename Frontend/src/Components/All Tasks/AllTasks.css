@@ -1,0 +1,41 @@
+h2{
+    margin-top: 100px;
+    font-size:xx-large;
+    text-align: center;
+}
+ul{
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    /* background-color: #AD49E1; */
+    max-height: 350px;
+    max-width: 350px;
+    overflow: auto;
+    list-style-type: none;
+}
+li{
+    overflow-x: hidden;
+    border-radius: 10px;
+}
+.outer3{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heading  {
+    font-size: x-large;
+    text-align: center;
+}
+.addtask{ 
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #37393b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.addtask:hover{
+    background-color: black;
+}
